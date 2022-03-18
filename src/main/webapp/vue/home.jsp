@@ -1,3 +1,4 @@
+<%@page import="ma.ensa.models.Client"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +9,8 @@
 <title>Home</title>
 </head>
 <body class="container">
-	<h1>welcome ${param.email} </h1>
+
+	<h1>welcome ${sessionScope.currentClient.prenom} </h1>
 	<div>	
 		<a href="vue/catalogue.jsp">Consultez le catalogue</a>
 	</div>

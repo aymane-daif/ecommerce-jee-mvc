@@ -8,7 +8,8 @@
 <title>Sign up</title>
 </head>
 <body class="container">
-	<h1>Inscrivez vous</h1>
+	<h1>${ invalidUser ? 'Vous avez entré des données incorrectes. Inscrivez vous' : 'Inscrivez vous' }</h1>
+
 	
 	<form action="/ecomm/SignUpController" method="POST">
   		<div class="grid">

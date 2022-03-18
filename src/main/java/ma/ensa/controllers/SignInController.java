@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ma.ensa.config.ConnDb;
 import ma.ensa.models.Client;
@@ -30,8 +31,12 @@ public class SignInController extends HttpServlet {
 
 		boolean isValidClient = client.logIn(connDb);
 		if(isValidClient){
+			HttpSession session = request.getSession();
+			Client currentClient = Client.getClientByEmail(connDb, request.getParameter("email"));
+			session.setAttribute("currentClient", currentClient);
 			doGet(request, response);
 		}else {
+			request.setAttribute("invalidUser", true);
 			this.getServletContext()
 			.getRequestDispatcher("/vue/signup.jsp")
 			.forward(request, response);
