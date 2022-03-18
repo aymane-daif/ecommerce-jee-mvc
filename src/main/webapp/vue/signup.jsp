@@ -56,9 +56,9 @@
   		</div>
   		
   		<label for="role">Role</label>
-		<select id="role" required>
+		<select id="role" name="role" required>
   			<option value="CLIENT" selected>Client</option>
-  			<option value="ADMIN" selected>Admin</option>
+  			<option value="ADMIN">Admin</option>
 		</select>
 	    
 	   <button type="submit">Submit</button>

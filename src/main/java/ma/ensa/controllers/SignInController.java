@@ -20,7 +20,7 @@ public class SignInController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		this.getServletContext()
-		.getRequestDispatcher("/vue/home.jsp")
+		.getRequestDispatcher("/vue/welcome.jsp")
 		.forward(request, response);
 	}
 

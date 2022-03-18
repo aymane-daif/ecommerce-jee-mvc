@@ -33,7 +33,7 @@ public class CategorieController extends HttpServlet {
 		newCategorie.createCategorie(connDb);
 		
 		this.getServletContext()
-		.getRequestDispatcher("/vue/home.jsp")
+		.getRequestDispatcher("/vue/welcome.jsp")
 		.forward(request, response);
 	}
 	
