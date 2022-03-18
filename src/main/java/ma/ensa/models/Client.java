@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import ma.ensa.config.ConnDb;
 
 public class Client {
-	private String email, nom, prenom, adresse, ville, tel, motDePasse;
+	private String email, nom, prenom, adresse, ville, tel, motDePasse, role;
 	private int codePostal;
 	
 	public void createClient(ConnDb connDb) {
-		String sql = "INSERT INTO client(email, nom, prenom, adresse, ville, tel, motDePasse, codePostal) values(?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO client(email, nom, prenom, adresse, ville, tel, motDePasse, codePostal, role) values(?,?,?,?,?,?,?,?,?);";
         String isClientExistsSql = "SELECT * from client WHERE email=?;";
 
         try {
@@ -27,6 +27,7 @@ public class Client {
                 preparedStatement.setString(6, getTel());
                 preparedStatement.setString(7, getMotDePasse());
                 preparedStatement.setInt(8, getCodePostal());
+                preparedStatement.setString(9, getRole());
 
                 preparedStatement.executeUpdate();
         	}
@@ -100,5 +101,13 @@ public class Client {
 	}
 	public void setCodePostal(int codePostal) {
 		this.codePostal = codePostal;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

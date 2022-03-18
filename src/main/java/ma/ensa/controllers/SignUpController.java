@@ -34,7 +34,7 @@ public class SignUpController extends HttpServlet {
 		newClient.setVille(request.getParameter("ville"));
 		newClient.setMotDePasse(request.getParameter("motDePasse"));
 		newClient.setCodePostal(Integer.parseInt(request.getParameter("codePostal")));
-
+		newClient.setRole(request.getParameter("role"));
 		newClient.createClient(connDb);
 		
 		doGet(request, response);

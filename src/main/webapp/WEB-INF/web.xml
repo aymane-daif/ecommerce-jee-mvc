@@ -39,6 +39,26 @@
   	<url-pattern>/SignInController</url-pattern>
   </servlet-mapping>
   
+   <servlet>  
+    <servlet-name>ArticleController</servlet-name>  
+    <servlet-class>ma.ensa.controllers.ArticleController</servlet-class>    
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>ArticleController</servlet-name>  
+  	<url-pattern>/ArticleController</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>  
+    <servlet-name>CategorieController</servlet-name>  
+    <servlet-class>ma.ensa.controllers.CategorieController</servlet-class>    
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>CategorieController</servlet-name>  
+  	<url-pattern>/CategorieController</url-pattern>
+  </servlet-mapping>
+  
+
+  
   <context-param>  
     <param-name>url</param-name>  
     <param-value>jdbc:mysql://localhost:3306/ecommerce?serverTimezone=UTC</param-value>  

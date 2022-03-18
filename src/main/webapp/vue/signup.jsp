@@ -53,6 +53,12 @@
 		      <input type="password" id="motDePasse" name="motDePasse" required>
 		    </label>
   		</div>
+  		
+  		<label for="role">Role</label>
+		<select id="role" required>
+  			<option value="CLIENT" selected>Client</option>
+  			<option value="ADMIN" selected>Admin</option>
+		</select>
 	    
 	   <button type="submit">Submit</button>
 	</form>
