@@ -57,6 +57,15 @@
   	<url-pattern>/CategorieController</url-pattern>
   </servlet-mapping>
   
+  <servlet>  
+    <servlet-name>CommandeController</servlet-name>  
+    <servlet-class>ma.ensa.controllers.CommandeController</servlet-class>    
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>CommandeController</servlet-name>  
+  	<url-pattern>/CommandeController</url-pattern>
+  </servlet-mapping>
+  
 
   
   <context-param>  

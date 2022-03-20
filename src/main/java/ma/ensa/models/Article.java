@@ -34,12 +34,13 @@ public class Article {
 	
 	public static List<Article> getArticles(ConnDb connDb) {
 		List<Article> articles = new ArrayList<>();
-		String req = "SELECT titre,prix,nomCat FROM article,categorie WHERE article.refCat=categorie.refCat";
+		String req = "SELECT codeArticle,titre,prix,nomCat FROM article,categorie WHERE article.refCat=categorie.refCat";
 
 	     try{
 	           ResultSet resultSet = connDb.getSt().executeQuery(req);
 	           while(resultSet.next()){
 	        	   Article singleArticle = new Article();
+	        	   singleArticle.setCodeArticle(resultSet.getInt("codeArticle"));;
 	        	   singleArticle.setTitre(resultSet.getString("titre"));
 	        	   singleArticle.setPrix(resultSet.getDouble("prix"));
 	        	   singleArticle.getCategorie().setNomCat(resultSet.getString("nomCat"));
@@ -51,6 +52,29 @@ public class Article {
 	            e.getMessage();
 	     }
 	     return articles;
+	}
+	
+	public static Article getArticleById(ConnDb connDb, int id) {
+		Article article = new Article();
+		String req = "SELECT * FROM article WHERE codeArticle=?";
+
+	    try{
+	    	PreparedStatement preparedStatement = connDb.getConn().prepareStatement(req);
+	        preparedStatement.setInt(1, id);
+	        ResultSet resultSet = preparedStatement.executeQuery();
+	        while(resultSet.next()){
+	        	article.setCodeArticle(resultSet.getInt("codeArticle"));
+	        	article.setTitre(resultSet.getString("titre"));
+	        	article.setDesignation(resultSet.getString("designation"));
+	        	article.setStock(resultSet.getInt("stock"));
+	        	article.setPrix(resultSet.getDouble("prix"));
+	        	article.getCategorie().setNomCat(resultSet.getString("nomCat"));
+	       }
+
+	   }catch (SQLException e){
+	      e.getMessage();
+	   }
+	   return article;
 	}
 	
 	public String getTitre() {

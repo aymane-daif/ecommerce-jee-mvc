@@ -10,13 +10,14 @@
 </head>
 <body class="container">
 	<h1>Liste des articles</h1>
-	
+	<a href="vue/commande.jsp">Go to panier</a>
 		<table role="grid">
 		<thead>
 			<tr>
 				<th scope="col">Categorie</th>
 				<th scope="col">Titre</th>
 				<th scope="col">Prix</th>
+				<th scope="col">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,6 +30,12 @@
             			<th scope="row"><%= articles.get(i).getCategorie().getNomCat() %></th>
             			<td><%= articles.get(i).getTitre() %></td>
             			<td><%= articles.get(i).getPrix() %></td>
+            			<td>
+            				<form action="/ecomm/CommandeController" method="POST">
+            					<input type="hidden" name="codeArticle" value="<%= articles.get(i).getCodeArticle() %>" />
+            					<button type="submit" class="outline">Ajouter au panier</button>
+           					</form>
+            			</td>
 					</tr>
 					
 			<%	}
