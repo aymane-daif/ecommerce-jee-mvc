@@ -20,7 +20,7 @@ public class SignUpController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.getServletContext()
-		.getRequestDispatcher("/vue/signin.jsp")
+		.getRequestDispatcher("/vue/signup.jsp")
 		.forward(request, response);
 	}
 
@@ -37,7 +37,9 @@ public class SignUpController extends HttpServlet {
 		newClient.setRole(request.getParameter("role"));
 		newClient.createClient(connDb);
 		
-		doGet(request, response);
+		this.getServletContext()
+		.getRequestDispatcher("/vue/signin.jsp")
+		.forward(request, response);
 	}
 
 	@Override

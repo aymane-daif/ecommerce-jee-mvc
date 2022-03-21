@@ -8,6 +8,9 @@
 <title>Categorie</title>
 </head>
 <body class="container">
+<div>
+		<a href="/ecomm/WelcomeController">Retour à l'acceuil</a>
+	</div>
 	<h1>Créer une nouvelle catégorie</h1>
 	
 		

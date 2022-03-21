@@ -77,6 +77,21 @@ public class Article {
 	   return article;
 	}
 	
+	public static void updateArticleStock(ConnDb connDb, int codeArticle, int stock) {
+		String sql = "UPDATE article SET stock=? WHERE codeArticle=?;";
+
+        try {
+        	PreparedStatement preparedStatement = connDb.getConn().prepareStatement(sql);
+            preparedStatement.setInt(1, stock);
+            preparedStatement.setInt(2, codeArticle);
+
+            preparedStatement.executeUpdate();
+        	
+        }catch(SQLException e) {
+        	System.out.println(e.getMessage());
+        }
+	}
+	
 	public String getTitre() {
 		return titre;
 	}

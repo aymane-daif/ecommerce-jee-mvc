@@ -9,6 +9,9 @@
 <title>Articles</title>
 </head>
 <body class="container">
+<div>
+		<a href="/ecomm/WelcomeController">Retour à l'acceuil</a>
+	</div>
 	<h1>Liste des articles</h1>
 	<a href="/ecomm/CommandeController">Go to panier</a>
 		<table role="grid">
@@ -16,6 +19,7 @@
 			<tr>
 				<th scope="col">Categorie</th>
 				<th scope="col">Titre</th>
+				<th scope="col">Stock</th>
 				<th scope="col">Prix</th>
 				<th scope="col">Action</th>
 			</tr>
@@ -29,6 +33,7 @@
 					<tr>
             			<th scope="row"><%= articles.get(i).getCategorie().getNomCat() %></th>
             			<td><%= articles.get(i).getTitre() %></td>
+            			<td><%= articles.get(i).getStock() %></td>
             			<td><%= articles.get(i).getPrix() %></td>
             			<td>
             				<form action="/ecomm/CommandeController" method="POST">

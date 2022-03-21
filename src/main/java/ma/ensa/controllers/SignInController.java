@@ -19,9 +19,16 @@ public class SignInController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		this.getServletContext()
-		.getRequestDispatcher("/vue/welcome.jsp")
-		.forward(request, response);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("currentClient") != null) {
+			this.getServletContext()
+			.getRequestDispatcher("/vue/welcome.jsp")
+			.forward(request, response);
+		}else {
+			this.getServletContext()
+			.getRequestDispatcher("/vue/signin.jsp")
+			.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

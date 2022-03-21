@@ -10,6 +10,9 @@
 <title>Article</title>
 </head>
 <body class="container">
+<div>
+		<a href="/ecomm/WelcomeController">Retour à l'acceuil</a>
+	</div>
 	<h1>Créer un nouveau article</h1>
 	
 		

@@ -43,58 +43,61 @@ public class CommandeController extends HttpServlet {
 		LigneCommande ligneCommande = new LigneCommande();
 		
 		int codeArticle = Integer.parseInt(request.getParameter("codeArticle"));
-		//Article article = Article.getArticleById(connDb, codeArticle);
+		Article article = Article.getArticleById(connDb, codeArticle);
 		
-		if(session.getAttribute("commandes") != null) {
-			List<Commande> sessionCommandes = (List<Commande>)session.getAttribute("commandes");
-			int commandeNum = -1;
+		if(article.getStock() > 0) {
+			Article.updateArticleStock(connDb, codeArticle, article.getStock() - 1);
+			
+			if(session.getAttribute("commandes") != null) {
+				List<Commande> sessionCommandes = (List<Commande>)session.getAttribute("commandes");
+				int commandeNum = -1;
 
-			for(Commande cmd:sessionCommandes) {
-				if(cmd.getCodeArticle() == codeArticle && cmd.getCodeClient() == currentClient.getId()) {
-					commandeNum = cmd.getCommandeNum();
+				for(Commande cmd:sessionCommandes) {
+					if(cmd.getCodeArticle() == codeArticle && cmd.getCodeClient() == currentClient.getId()) {
+						commandeNum = cmd.getCommandeNum();
+					}
 				}
-			}
-			
-			
-			if(commandeNum == -1){
-				// sessionCommandes doesn't have this commande
+				
+				
+				if(commandeNum == -1){
+					Commande newCommande = new Commande();
+					newCommande.setCodeClient(currentClient.getId());
+					newCommande.setCodeArticle(codeArticle);
+					newCommande.setDateCommande(new Date(System.currentTimeMillis()));
+					int cmdNum = newCommande.createCommande(connDb);
+					newCommande.setCommandeNum(cmdNum);
+					sessionCommandes.add(newCommande);
+					
+					ligneCommande.setCodeArticle(codeArticle);
+					ligneCommande.setCommandeNum(cmdNum);
+					ligneCommande.createLigneCommande(connDb);
+				}else {
+					int prevQte = LigneCommande.getLigneCommandeQte(connDb, codeArticle, commandeNum);
+					LigneCommande.updateLigneCommandeQuantite(connDb, codeArticle, commandeNum, prevQte + 1);
+				}
+				
+			}else {
+				List<Commande> commandes = new ArrayList<>();
 				Commande newCommande = new Commande();
 				newCommande.setCodeClient(currentClient.getId());
 				newCommande.setCodeArticle(codeArticle);
 				newCommande.setDateCommande(new Date(System.currentTimeMillis()));
 				int cmdNum = newCommande.createCommande(connDb);
 				newCommande.setCommandeNum(cmdNum);
-				sessionCommandes.add(newCommande);
+				commandes.add(newCommande);
 				
 				ligneCommande.setCodeArticle(codeArticle);
 				ligneCommande.setCommandeNum(cmdNum);
 				ligneCommande.createLigneCommande(connDb);
-			}else {
-				int prevQte = LigneCommande.getLigneCommandeQte(connDb, codeArticle, commandeNum);
-				LigneCommande.updateLigneCommandeQuantite(connDb, codeArticle, commandeNum, prevQte + 1);
+				
+				session.setAttribute("commandes", commandes);
 			}
 			
 		}else {
-			List<Commande> commandes = new ArrayList<>();
-			Commande newCommande = new Commande();
-			newCommande.setCodeClient(currentClient.getId());
-			newCommande.setCodeArticle(codeArticle);
-			newCommande.setDateCommande(new Date(System.currentTimeMillis()));
-			int cmdNum = newCommande.createCommande(connDb);
-			newCommande.setCommandeNum(cmdNum);
-			commandes.add(newCommande);
-			
-			ligneCommande.setCodeArticle(codeArticle);
-			ligneCommande.setCommandeNum(cmdNum);
-			ligneCommande.createLigneCommande(connDb);
-			
-			session.setAttribute("commandes", commandes);
+			// article out of stock
 		}
-		List<Article> articles = Article.getArticles(connDb);
-		request.setAttribute("articles", articles);
-		this.getServletContext()
-		.getRequestDispatcher("/vue/articles.jsp")
-		.forward(request, response);
+		
+		doGet(request, response);
 	}
 	
 	@Override

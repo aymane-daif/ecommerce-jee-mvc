@@ -7,9 +7,7 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>/ecomm/WelcomeController</welcome-file>
-    
+    <welcome-file>default.jsp</welcome-file>    
   </welcome-file-list>
   
   <servlet>  
@@ -18,7 +16,7 @@
   </servlet>  
   <servlet-mapping>
   	<servlet-name>WelcomeController</servlet-name>  
-  	<url-pattern>/WelcomeController</url-pattern>
+  	<url-pattern>/</url-pattern>
   </servlet-mapping>
   
   <servlet>  
@@ -46,6 +44,15 @@
   <servlet-mapping>
   	<servlet-name>ArticleController</servlet-name>  
   	<url-pattern>/ArticleController</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>  
+    <servlet-name>AddArticleController</servlet-name>  
+    <servlet-class>ma.ensa.controllers.AddArticleController</servlet-class>    
+  </servlet>  
+  <servlet-mapping>
+  	<servlet-name>AddArticleController</servlet-name>  
+  	<url-pattern>/AddArticleController</url-pattern>
   </servlet-mapping>
   
   <servlet>  

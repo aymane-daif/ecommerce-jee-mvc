@@ -9,39 +9,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ma.ensa.config.ConnDb;
-import ma.ensa.models.Article;
+import ma.ensa.models.Categorie;
 
 
-public class ArticleController extends HttpServlet {
+public class AddArticleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ConnDb connDb;
        
-    
-    public ArticleController() {
+    public AddArticleController() {
         super();
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Article> articles = Article.getArticles(connDb);
-		request.setAttribute("articles", articles);
+		List<Categorie> categories = Categorie.getCategories(connDb);
+		request.setAttribute("categories", categories);
+				
 		this.getServletContext()
-		.getRequestDispatcher("/vue/articles.jsp")
+		.getRequestDispatcher("/vue/createArticle.jsp")
 		.forward(request, response);
-		
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Article newArticle = new Article();
-		newArticle.setTitre(request.getParameter("titre"));
-		newArticle.setDesignation(request.getParameter("designation"));
-		newArticle.setPrix(Double.parseDouble(request.getParameter("prix")));
-		newArticle.setStock(Integer.parseInt(request.getParameter("stock")));
-		newArticle.getCategorie().setRefCat(Integer.parseInt(request.getParameter("categorie")));
-		
-		newArticle.createArticle(connDb);
-		
 		doGet(request, response);
 	}
 	
