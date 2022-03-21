@@ -10,7 +10,7 @@
 </head>
 <body class="container">
 	<h1>Liste des articles</h1>
-	<a href="vue/commande.jsp">Go to panier</a>
+	<a href="/ecomm/CommandeController">Go to panier</a>
 		<table role="grid">
 		<thead>
 			<tr>

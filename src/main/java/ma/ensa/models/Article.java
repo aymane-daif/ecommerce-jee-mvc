@@ -121,6 +121,17 @@ public class Article {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == this) return true;
+
+        if(!(obj instanceof Article)) return false;
+
+        Article a = (Article) obj;
+
+        return a.codeArticle == this.codeArticle;
+	}
 	
 	
 }
