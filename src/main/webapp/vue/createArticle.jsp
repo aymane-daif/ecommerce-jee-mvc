@@ -10,13 +10,12 @@
 <title>Article</title>
 </head>
 <body class="container">
-<div>
-		<a href="/ecomm/WelcomeController">Retour à l'acceuil</a>
-	</div>
+	<%@ include file="header.jsp" %>
+
 	<h1>Créer un nouveau article</h1>
 	
 		
-	<form action="/ecomm/ArticleController" method="POST">
+	<form action="/ArticleController" method="POST">
   		<div class="grid">
   			<label for="titre">
 		      Titre

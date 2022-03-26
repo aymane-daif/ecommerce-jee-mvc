@@ -9,11 +9,10 @@
 <title>Articles</title>
 </head>
 <body class="container">
-<div>
-		<a href="/ecomm/WelcomeController">Retour à l'acceuil</a>
-	</div>
+	<%@ include file="header.jsp" %>
+
 	<h1>Liste des articles</h1>
-	<a href="/ecomm/CommandeController">Go to panier</a>
+	<a href="/CommandeController">Go to panier</a>
 		<table role="grid">
 		<thead>
 			<tr>
@@ -36,7 +35,7 @@
             			<td><%= articles.get(i).getStock() %></td>
             			<td><%= articles.get(i).getPrix() %></td>
             			<td>
-            				<form action="/ecomm/CommandeController" method="POST">
+            				<form action="/CommandeController" method="POST">
             					<input type="hidden" name="codeArticle" value="<%= articles.get(i).getCodeArticle() %>" />
             					<button type="submit" class="outline">Ajouter au panier</button>
            					</form>

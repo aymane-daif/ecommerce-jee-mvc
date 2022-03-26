@@ -34,7 +34,7 @@ public class Article {
 	
 	public static List<Article> getArticles(ConnDb connDb) {
 		List<Article> articles = new ArrayList<>();
-		String req = "SELECT codeArticle,titre,prix,nomCat FROM article,categorie WHERE article.refCat=categorie.refCat";
+		String req = "SELECT codeArticle,titre,prix,stock,nomCat FROM article,categorie WHERE article.refCat=categorie.refCat AND article.stock > 0;";
 
 	     try{
 	           ResultSet resultSet = connDb.getSt().executeQuery(req);
@@ -43,6 +43,7 @@ public class Article {
 	        	   singleArticle.setCodeArticle(resultSet.getInt("codeArticle"));;
 	        	   singleArticle.setTitre(resultSet.getString("titre"));
 	        	   singleArticle.setPrix(resultSet.getDouble("prix"));
+	        	   singleArticle.setStock(resultSet.getInt("stock"));
 	        	   singleArticle.getCategorie().setNomCat(resultSet.getString("nomCat"));
 
 	        	   articles.add(singleArticle);

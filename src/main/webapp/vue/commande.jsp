@@ -10,9 +10,8 @@
 <title>Commande</title>
 </head>
 <body class="container">
-	<div>
-		<a href="/ecomm/WelcomeController">Retour à l'acceuil</a>
-	</div>
+	<%@ include file="header.jsp" %>
+
 	<h1>You have ${ sessionScope.commandes.size() > 0 ? sessionScope.commandes.size() : 0} products </h1>
 	
 	<%

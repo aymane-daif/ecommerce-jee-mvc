@@ -14,15 +14,15 @@
 			? 
 				'
 					<div>	
-						<a href="/ecomm/ArticleController">Consulter les articles</a>
+						<a href="/ArticleController">Consulter les articles</a>
 					</div> 
 					
 					<div>	
-						<a href="/ecomm/CategorieController">Ajouter une nouvelle catégorie</a>
+						<a href="/CategorieController">Ajouter une nouvelle catégorie</a>
 					</div>
 					
 					<div>	
-						<a href="/ecomm/AddArticleController">Ajouter un nouveau article</a>
+						<a href="/AddArticleController">Ajouter un nouveau article</a>
 					</div>
 
 				'
@@ -31,16 +31,16 @@
 					? 
   						'
 					    	<div>	
-								<a href="/ecomm/ArticleController">Consultez les articles</a>
+								<a href="/ArticleController">Consultez les articles</a>
 							</div> 
 						'
 					:
 						'
 							<div>	
-								<a href="/ecomm/SignInController">Déjà client?: identifiez-vous</a>
+								<a href="/SignInController">Déjà client?: identifiez-vous</a>
 							</div>
 							<div>
-								<a href="/ecomm/SignUpController">Nouveau client?: inscrivez-vous</a>
+								<a href="/SignUpController">Nouveau client?: inscrivez-vous</a>
 							</div>
 	
 						' 

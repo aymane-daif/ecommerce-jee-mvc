@@ -11,7 +11,7 @@
 	<h1>${ invalidUser ? 'Vous avez entré des données incorrectes. Inscrivez vous' : 'Inscrivez vous' }</h1>
 
 	
-	<form action="/ecomm/SignUpController" method="POST">
+	<form action="/SignUpController" method="POST">
   		<div class="grid">
 		    <label for="nom">
       			Nom

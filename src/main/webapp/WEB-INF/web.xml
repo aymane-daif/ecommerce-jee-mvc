@@ -73,22 +73,29 @@
   	<url-pattern>/CommandeController</url-pattern>
   </servlet-mapping>
   
-
+<error-page>  
+	<error-code>404</error-code>
+  <location>/vue/notFound.jsp</location>  
+</error-page>  
+ <error-page>  
+  <error-code>500</error-code>  
+  <location>/vue/serverError.jsp</location>  
+  </error-page>  
   
   <context-param>  
     <param-name>url</param-name>  
-    <param-value>jdbc:mysql://localhost:3306/ecommerce?serverTimezone=UTC</param-value>  
+    <param-value>jdbc:postgresql://ec2-3-229-161-70.compute-1.amazonaws.com:5432/dabf4a1p3gruho?serverTimezone=UTC</param-value>  
   </context-param>  
   <context-param>  
     <param-name>driver</param-name>  
-    <param-value>com.mysql.cj.jdbc.Driver</param-value>  
+    <param-value>org.postgresql.Driver</param-value>  
   </context-param>  
    <context-param>  
     <param-name>username</param-name>  
-    <param-value>root</param-value>  
+    <param-value>kpezvqucoozmkt</param-value>  
   </context-param>   
   <context-param>  
     <param-name>password</param-name>  
-    <param-value>root</param-value>  
+    <param-value>2c7c5f41fd9892cdca92b8d4345851166c8c81dfafcc78b55a5c91f22dcb3259</param-value>  
   </context-param>  
 </web-app>

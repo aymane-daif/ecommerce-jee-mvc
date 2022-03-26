@@ -95,6 +95,11 @@ public class CommandeController extends HttpServlet {
 			
 		}else {
 			// article out of stock
+			List<Article> articles = Article.getArticles(connDb);
+			request.setAttribute("articles", articles);
+			this.getServletContext()
+			.getRequestDispatcher("/vue/articles.jsp")
+			.forward(request, response);
 		}
 		
 		doGet(request, response);

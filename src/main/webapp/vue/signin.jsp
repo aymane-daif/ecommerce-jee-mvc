@@ -10,15 +10,15 @@
 <body class="container">
 	<h1>Identifiez vous</h1>
 	
-		<form action="/ecomm/SignInController" method="POST">
+		<form action="/SignInController" method="POST">
 			<div>
-				<label for="email">Email</label>
-	  			<input type="email" id="email" name="email" required>
+				<label for="login">Login</label>
+	  			<input type="text" id="login" name="login" required>
 			</div>
 	  		
 	  		<div>
-				<label for="motDePasse">Mot de passe</label>
-	  			<input type="password" id="motDePasse" name="motDePasse" required>
+				<label for="password">Mot de passe</label>
+	  			<input type="password" id="password" name="password" required>
 			</div>
 		    
 		   <button type="submit">Submit</button>
