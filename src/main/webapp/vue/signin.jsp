@@ -1,3 +1,4 @@
+<%@ page import="java.util.Locale, java.util.ResourceBundle, ma.ensa.models.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +9,13 @@
 <title>Sign in</title>
 </head>
 <body class="container">
-	<h1>Identifiez vous</h1>
+	<%  Locale.setDefault(new Locale("en", "US"));
+	ResourceBundle bundle = ResourceBundle.getBundle("signin");  
+	String SignIn = bundle.getString("SignIn");
+	String Password = bundle.getString("Password");
+	String Submit = bundle.getString("Submit");
+%>
+	<h1><%=SignIn %></h1>
 	
 		<form action="/SignInController" method="POST">
 			<div>
@@ -17,11 +24,11 @@
 			</div>
 	  		
 	  		<div>
-				<label for="password">Mot de passe</label>
+				<label for="password"><%=Password %></label>
 	  			<input type="password" id="password" name="password" required>
 			</div>
 		    
-		   <button type="submit">Submit</button>
+		   <button type="submit"><%=Submit%></button>
 	</form>
 </body>
 </html>

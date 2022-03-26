@@ -1,4 +1,4 @@
-<%@page import="ma.ensa.models.Article, java.util.List"%>
+<%@page import="ma.ensa.models.*, java.util.List, java.util.Locale, java.util.ResourceBundle"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,16 +10,27 @@
 </head>
 <body class="container">
 	<%@ include file="header.jsp" %>
+	
+	<%  Locale.setDefault(new Locale("en", "US"));
+	ResourceBundle bundle = ResourceBundle.getBundle("articles");  
+	String titre = bundle.getString("titre");
+	String linkToShoppingCart = bundle.getString("linkToShoppingCart");
+	String category = bundle.getString("category");
+	String title = bundle.getString("title");
+	String price = bundle.getString("price");
+	String addToShoppingCart = bundle.getString("addToShoppingCart");
 
-	<h1>Liste des articles</h1>
-	<a href="/CommandeController">Go to panier</a>
+%>
+
+	<h1><%=titre %></h1>
+	<a href="/CommandeController"><%=linkToShoppingCart %></a>
 		<table role="grid">
 		<thead>
 			<tr>
-				<th scope="col">Categorie</th>
-				<th scope="col">Titre</th>
+				<th scope="col"><%= category %></th>
+				<th scope="col"><%= title %></th>
 				<th scope="col">Stock</th>
-				<th scope="col">Prix</th>
+				<th scope="col"><%= price %></th>
 				<th scope="col">Action</th>
 			</tr>
 		</thead>
@@ -37,7 +48,7 @@
             			<td>
             				<form action="/CommandeController" method="POST">
             					<input type="hidden" name="codeArticle" value="<%= articles.get(i).getCodeArticle() %>" />
-            					<button type="submit" class="outline">Ajouter au panier</button>
+            					<button type="submit" class="outline"><%=addToShoppingCart %></button>
            					</form>
             			</td>
 					</tr>

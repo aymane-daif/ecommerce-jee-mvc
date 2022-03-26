@@ -1,4 +1,4 @@
-<%@page import="ma.ensa.models.*,ma.ensa.config.ConnDb, java.util.List"%>
+<%@page import="ma.ensa.models.*, java.util.List,ma.ensa.config.ConnDb, java.util.Locale, java.util.ResourceBundle"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,19 +12,27 @@
 <body class="container">
 	<%@ include file="header.jsp" %>
 
-	<h1>You have ${ sessionScope.commandes.size() > 0 ? sessionScope.commandes.size() : 0} products </h1>
+<%  Locale.setDefault(new Locale("en", "US"));
+	ResourceBundle bundle = ResourceBundle.getBundle("commande");  
+	String titre = bundle.getString("titre");
+	String title = bundle.getString("title");
+	String nbArticles = bundle.getString("nbArticles");
+	String totalPrice = bundle.getString("totalPrice");
+%>
+
 	
 	<%
 		List<Commande> commandes = (List<Commande>)request.getSession().getAttribute("commandes");
 		if(commandes != null){
 	%>
+				<h1><%= titre %> <%= commandes.size() %> articles</h1>
 	
 					<table role="grid">
 						<thead>
 							<tr>
-								<th scope="col">Titre</th>
-								<th scope="col">Nombre d'articles</th>
-								<th scope="col">Prix total</th>
+								<th scope="col"><%=title %></th>
+								<th scope="col"><%=nbArticles %></th>
+								<th scope="col"><%=totalPrice %></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -43,9 +51,10 @@
         				</tbody>
      			 </table>
 			<%
-		}
+		}else {
 			%>
-	
+			<h1><%= titre %> 0 articles</h1>
+<%	} %>
 	
 </body>
 </html>

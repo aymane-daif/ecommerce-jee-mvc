@@ -10,7 +10,12 @@
 </head>
 <body class="container">
 	<%@ include file="header.jsp" %>
-	<h1>Erreur du serveur</h1>
+	<%  Locale.setDefault(new Locale("en", "US"));
+	ResourceBundle nFbundle = ResourceBundle.getBundle("header");  
+	String titre = nFbundle.getString("titre");
+
+%>
+	<h1><%=titre %></h1>
 
 </body>
 </html>
